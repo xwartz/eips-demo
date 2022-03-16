@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './index.css'
@@ -11,13 +11,13 @@ import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="eip-3326" element={<EIP3326 />} />
         <Route path="eip-3085" element={<EIP3085 />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
     <ToastContainer />
   </React.StrictMode>,
   document.getElementById('root'),
