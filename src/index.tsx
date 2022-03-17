@@ -8,9 +8,11 @@ import App from './App'
 import EIP3326 from './eip-3326'
 import EIP3085 from './eip-3085'
 import reportWebVitals from './reportWebVitals'
+import Header from '~cps/Header'
 
 ReactDOM.render(
   <React.StrictMode>
+    <Header />
     <HashRouter>
       <Routes>
         <Route path="/" element={<App />} />
