@@ -1,0 +1,38 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+a {
+  display: block;
+  font-size: 20px;
+  margin-top: 40px;
+}
+
+section {
+  background: #eee;
+  margin: 20px 10px;
+  padding: 10px;
+  text-align: left;
+}
+
+section button {
+  margin-bottom: 10px;
+}
+
+pre {
+  padding: 10px;
+  overflow: auto;
+  font-size: 16;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  white-space: pre-wrap;
+}
+
+button {
+  padding: 10px 20px;
+  display: block;
+  background: #ccf;
+  font-size: 18px;
+}
