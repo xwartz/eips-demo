@@ -131,51 +131,7 @@ const eth_increase_allowance_Approve = () => {
     })
     .catch(alertErr)
 }
-const eth_increase_approve_Approve = () => {
-  const data = `${INCREASE_APPROVAL_METHOD_ID}000000000000000000000000${LON_ADDRESS}00000000000000000000000000000000000000000000000000044364c5bb0000`
-  const params = [
-    {
-      from: account,
-      to: lon,
-      data,
-      gas: '200000',
-      gasPrice: '1000000',
-    },
-  ]
 
-  ethereum
-    .request({
-      method: 'eth_sendTransaction',
-      params,
-    })
-    .then((result: any) => {
-      alert(result)
-    })
-    .catch(alertErr)
-}
-
-const eth_decrease_approve_Approve = () => {
-  const data = `${DECREASE_APPROVAL_METHOD_ID}000000000000000000000000${LON_ADDRESS}00000000000000000000000000000000000000000000000000044364c5bb0000`
-  const params = [
-    {
-      from: account,
-      to: lon,
-      data,
-      gas: '200000',
-      gasPrice: '1000000',
-    },
-  ]
-
-  ethereum
-    .request({
-      method: 'eth_sendTransaction',
-      params,
-    })
-    .then((result: any) => {
-      alert(result)
-    })
-    .catch(alertErr)
-}
 const methods = [
   {
     func: eth_requestAccounts,
@@ -202,22 +158,20 @@ const methods = [
     name: 'eth_decrease_allowance_Approve',
     code: eth_decrease_allowance_Approve.toString(),
   },
-  {
-    func: eth_increase_approve_Approve,
-    name: 'eth_increase_approve_Approve',
-    code: eth_increase_approve_Approve.toString(),
-  },
-  {
-    func: eth_decrease_approve_Approve,
-    name: 'eth_decrease_approve_Approve',
-    code: eth_decrease_approve_Approve.toString(),
-  },
 ]
 
-export default function App() {
+type method = {
+  func: () => any
+  name: string
+  code: string
+}
+type ApproveList = {
+  methods: method[]
+}
+
+export function ApproveList({ methods }: ApproveList) {
   return (
-    <div className="App">
-      <h3 id="h1">Eth Approve example in imToken</h3>
+    <>
       {methods.map(method => {
         return (
           <section key={method.name}>
@@ -229,6 +183,24 @@ export default function App() {
           </section>
         )
       })}
+    </>
+  )
+}
+
+type AppProps = {
+  title: string
+  methods: method[]
+}
+
+export function ApproveApp({ title, methods }: AppProps) {
+  return (
+    <div className="App">
+      <h3 id="h1">{title}</h3>
+      <ApproveList methods={methods} />
     </div>
   )
+}
+
+export default function App() {
+  return <ApproveApp title="Eth Approve example in imToken" methods={methods} />
 }

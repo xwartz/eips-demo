@@ -1,5 +1,5 @@
-import './styles.css'
-import { alert, alertErr } from '../eth-approve'
+import '../eth-approve/styles.css'
+import { alert, alertErr, ApproveApp } from '../eth-approve'
 
 const ethereum = window.ethereum
 const tronWeb = window.tronWeb
@@ -98,20 +98,5 @@ const methods = [
 ]
 
 export default function App() {
-  return (
-    <div className="App">
-      <h3 id="h1">Tron Approve example in imToken</h3>
-      {methods.map(method => {
-        return (
-          <section key={method.name}>
-            <button onClick={method.func}>{method.name}</button>
-            <details>
-              <summary>show code</summary>
-              <pre>{method.code}</pre>
-            </details>
-          </section>
-        )
-      })}
-    </div>
-  )
+  return <ApproveApp title="Tron Approve example in imToken" methods={methods} />
 }
