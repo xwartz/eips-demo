@@ -86,7 +86,7 @@ const eth_Approve_EOA = () => {
     .catch(alertErr)
 }
 
-const eth_decrease_Approve = () => {
+const eth_decrease_allowance_Approve = () => {
   const data = `${DECREASE_ALLOWANCE_METHOD_ID}000000000000000000000000${LON_ADDRESS}00000000000000000000000000000000000000000000000000044364c5bb0000`
   const params = [
     {
@@ -109,7 +109,7 @@ const eth_decrease_Approve = () => {
     .catch(alertErr)
 }
 
-const eth_increase_Approve = () => {
+const eth_increase_allowance_Approve = () => {
   const data = `${INCREASE_ALLOWANCE_METHOD_ID}000000000000000000000000${LON_ADDRESS}00000000000000000000000000000000000000000000000000044364c5bb0000`
   const params = [
     {
@@ -131,7 +131,51 @@ const eth_increase_Approve = () => {
     })
     .catch(alertErr)
 }
+const eth_increase_approve_Approve = () => {
+  const data = `${INCREASE_APPROVAL_METHOD_ID}000000000000000000000000${LON_ADDRESS}00000000000000000000000000000000000000000000000000044364c5bb0000`
+  const params = [
+    {
+      from: account,
+      to: lon,
+      data,
+      gas: '200000',
+      gasPrice: '1000000',
+    },
+  ]
 
+  ethereum
+    .request({
+      method: 'eth_sendTransaction',
+      params,
+    })
+    .then((result: any) => {
+      alert(result)
+    })
+    .catch(alertErr)
+}
+
+const eth_decrease_approve_Approve = () => {
+  const data = `${DECREASE_APPROVAL_METHOD_ID}000000000000000000000000${LON_ADDRESS}00000000000000000000000000000000000000000000000000044364c5bb0000`
+  const params = [
+    {
+      from: account,
+      to: lon,
+      data,
+      gas: '200000',
+      gasPrice: '1000000',
+    },
+  ]
+
+  ethereum
+    .request({
+      method: 'eth_sendTransaction',
+      params,
+    })
+    .then((result: any) => {
+      alert(result)
+    })
+    .catch(alertErr)
+}
 const methods = [
   {
     func: eth_requestAccounts,
@@ -149,14 +193,24 @@ const methods = [
     code: eth_Approve_EOA.toString(),
   },
   {
-    func: eth_increase_Approve,
-    name: 'eth_increase_Approve',
-    code: eth_increase_Approve.toString(),
+    func: eth_increase_allowance_Approve,
+    name: 'eth_increase_allowance_Approve',
+    code: eth_increase_allowance_Approve.toString(),
   },
   {
-    func: eth_decrease_Approve,
-    name: 'eth_decrease_Approve',
-    code: eth_decrease_Approve.toString(),
+    func: eth_decrease_allowance_Approve,
+    name: 'eth_decrease_allowance_Approve',
+    code: eth_decrease_allowance_Approve.toString(),
+  },
+  {
+    func: eth_increase_approve_Approve,
+    name: 'eth_increase_approve_Approve',
+    code: eth_increase_approve_Approve.toString(),
+  },
+  {
+    func: eth_decrease_approve_Approve,
+    name: 'eth_decrease_approve_Approve',
+    code: eth_decrease_approve_Approve.toString(),
   },
 ]
 
