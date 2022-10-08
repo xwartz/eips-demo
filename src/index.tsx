@@ -7,6 +7,8 @@ import './index.css'
 import App from './App'
 import EIP3326 from './eip-3326'
 import EIP3085 from './eip-3085'
+import ETHApprove from './eth-approve'
+import TronApprove from './tron-approve'
 import reportWebVitals from './reportWebVitals'
 import Header from '~cps/Header'
 
@@ -18,6 +20,8 @@ ReactDOM.render(
         <Route path="/" element={<App />} />
         <Route path="eip-3326" element={<EIP3326 />} />
         <Route path="eip-3085" element={<EIP3085 />} />
+        <Route path="eth-approve" element={<ETHApprove />} />
+        <Route path="tron-approve" element={<TronApprove />} />
       </Routes>
     </HashRouter>
     <ToastContainer />
